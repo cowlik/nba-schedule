@@ -1,0 +1,200 @@
+@import '../../styles/variables';
+
+.schedule {
+	background-color: #fff;
+	border-radius: 4px;
+	font-weight: normal;
+	text-align: center;
+	text-transform: uppercase;
+	text-rendering: optimizeLegibility;
+
+	header,
+	footer {
+		padding: $padding;
+		background-color: #eee;
+	}
+
+	footer {
+		padding-bottom: 0;
+	}
+
+	h2 {
+		margin: 0;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	a {
+		color: $trailblazers-red;
+		text-decoration: none;
+		transition: color 0.25s ease-out;
+
+		&:hover {
+			color: darken($trailblazers-red, 10%);
+		}
+	}
+
+	hr {
+		margin: 0 $padding;
+		border-bottom: 1px solid #fff;
+		border-top: 1px solid #ccc;
+	}
+}
+
+.schedule-error {
+	padding: $padding;
+	color: $trailblazers-red;
+	font-family: 'UnitedSansCdHv', franklin-gothic-urw;
+	font-size: 1rem;
+}
+
+.schedule-games {
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid $trailblazers-red;
+	list-style: none;
+}
+
+.schedule-game {
+	padding: ($padding / 2) 0;
+	background-image: linear-gradient(#fff 35%, #dfdfdf);
+	border-bottom: 1px solid $trailblazers-red;
+	opacity: 0;
+	overflow: hidden;
+	transition: opacity 0.4s ease-in-out;
+
+	&.schedule-game-ready {
+		opacity: 1;
+	}
+
+	img {
+		width: 55px;
+		height: auto;
+	}
+
+	> div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		> div {
+			padding: ($padding / 2) $padding;
+			overflow: hidden;
+		}
+	}
+
+	> div:first-child {
+		padding-bottom: $padding / 2;
+
+		> div {
+			padding-right: $padding * 2;
+			padding-left: $padding * 2;
+		}
+
+		> div:first-child {
+			padding-left: $padding;
+			padding-right: 0;
+			text-align: left;
+		}
+	}
+
+	> div:last-child {
+		padding-top: $padding / 2;
+		line-height: 0.9rem;
+	}
+
+	@media only screen and (min-width: $screen-med) and (max-width: $screen-lrg - 1) {
+		img {
+			width: 45px;
+		}
+
+		> div:first-child {
+			> div {
+				padding: $padding;
+			}
+
+			> div:first-child {
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+.schedule-game-date {
+	font-family: 'UnitedSansCdHv', franklin-gothic-urw;
+	font-size: 1.2rem;
+
+	&.schedule-game-date-today {
+		color: $trailblazers-red;
+	}
+}
+
+.schedule-game-time {
+	margin-top: 2px !important;
+	color: #666;
+	font-size: 0.8rem;
+	font-weight: bold;
+	line-height: 0.8rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.schedule-game-designation {
+	padding: 0 !important;
+	color: #666;
+	font-size: 0.8rem;
+	font-weight: bold;
+}
+
+.schedule-game-team,
+.schedule-game-opponent {
+	font-family: 'UnitedSansCdHv', franklin-gothic-urw;
+	line-height: 0.8rem;
+
+	p {
+		margin-top: 2px;
+	}
+}
+
+.schedule-game-broadcasts,
+.schedule-game-location {
+	width: 50%;
+	font-size: 0.7rem;
+	font-weight: bold;
+	text-align: left;
+
+	p {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+.schedule-game-broadcasts {
+	span {
+		margin-right: 3px;
+		padding: 0 0.4em;
+		background-color: #777;
+		border-radius: 0.25em;
+		color: #fff;
+		display: inline-block;
+		font-size: 0.5rem;
+		font-weight: normal;
+		text-transform: uppercase;
+		vertical-align: baseline;
+	}
+}
+
+.schedule-game-location {
+	font-weight: normal;
+	text-align: right;
+	text-transform: initial;
+}
+
+.schedule-game-cta {
+	font-weight: bold;
+	text-transform: uppercase;
+}

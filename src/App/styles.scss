@@ -1,0 +1,78 @@
+@import '../styles/variables';
+
+@font-face {
+	font-family: 'UnitedSansCdBd';
+	src: local('UnitedSansCdBd'), url(../fonts/UnitedSansCdBd.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'UnitedSansCdHv';
+	src: local('UnitedSansCdHv'), url(../fonts/UnitedSansCdHv.woff) format('woff');
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 15px;
+	background-color: #fafafa;
+	color: #000;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 0.9rem;
+	line-height: 1.2rem;
+	text-rendering: optimizeLegibility;
+}
+
+main {
+	max-width: 1170px;
+	margin: 0 auto;
+	display: flex !important;
+	flex-direction: column;
+
+	> section {
+		padding: $padding;
+		background-color: #fff;
+
+		h2 {
+			color: $trailblazers-red;
+		}
+
+		p {
+			color: #777;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	@media only screen and (min-width: $screen-med) {
+		flex-direction: row;
+
+		> section {
+			width: 68.085%;
+			min-height: 100vh;
+			margin-right: 20px;
+		}
+
+		> aside {
+			width: 31.915%;
+		}
+	}
+}
+
+h1 {
+	font-family: 'UnitedSansCdHv', franklin-gothic-urw;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+h2 {
+	margin: $padding 0;
+	font-family: 'UnitedSansCdHv', franklin-gothic-urw;
+	font-size: 22px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
