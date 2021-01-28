@@ -12,23 +12,29 @@ const Schedule = (props) => {
 		let counter = 0;
 
 		data.forEach((item, i) => {
-			if (counter < limit && item.stt !== 'Final') {
-				const isAway = item.h.tn.toLowerCase() !== team ? true : false;
-				const date = new Date(item.etm);
+			const dateGame = new Date(item.etm);
+			const dateNow = new Date();
 
-				games.push({
-					id: i,
-					isToday: parseDate(new Date()) === parseDate(date),
-					isAway: isAway,
-					date: parseDate(date),
-					time: parseTime(date),
-					broadcasts: getBroadcasts(item.bd.b, ['natl', isAway ? 'away' : 'home']),
-					team: isAway ? item.v : item.h,
-					opponent: isAway ? item.h : item.v,
-					location: [item.an, item.ac, item.as],
-				});
+			if (dateGame >= dateNow) {
+				if (counter < limit && item.stt.toLowerCase() !== 'final') {
+					const isAway = item.h.tn.toLowerCase() !== team ? true : false;
+					const isPostponed = item.stt.toLowerCase() === 'ppd' ? true : false;
 
-				counter++;
+					games.push({
+						id: i,
+						isToday: parseDate(dateNow) === parseDate(dateGame),
+						isAway: isAway,
+						isPostponed: isPostponed,
+						date: parseDate(dateGame),
+						time: parseTime(dateGame),
+						broadcasts: getBroadcasts(item.bd.b, ['natl', isAway ? 'away' : 'home']),
+						team: isAway ? item.v : item.h,
+						opponent: isAway ? item.h : item.v,
+						location: [item.an, item.ac, item.as],
+					});
+
+					counter++;
+				}
 			}
 		});
 
@@ -96,7 +102,7 @@ const Game = (props) => {
 			<div>
 				<div>
 					<p className={`schedule-game-date ${item.isToday ? 'schedule-game-date-today' : ''}`}>{item.date}</p>
-					<p className='schedule-game-time'>{item.time}</p>
+					<p className='schedule-game-time'>{item.isPostponed ? 'postponed' : item.time}</p>
 				</div>
 				<div className='schedule-game-team'>
 					<img width='80' height='64' src={`${logoUrl + item.team.ta.toLowerCase()}.gif`} alt={`${item.team.tc} ${item.team.tn}`} data-id='0' onLoad={(event) => onImgLoaded(event)} />
@@ -113,21 +119,24 @@ const Game = (props) => {
 			<hr></hr>
 			<div>
 				<div className='schedule-game-broadcasts'>
-					{item.broadcasts.map((item, i) => (
-						<p key={i}>
-							<span>{item.type === 'radio' ? 'ra' : item.type}</span>
-							{item.disp}
-						</p>
-					))}
+					{!item.isPostponed &&
+						item.broadcasts.map((item, i) => (
+							<p key={i}>
+								<span>{item.type === 'radio' ? 'ra' : item.type}</span>
+								{item.disp}
+							</p>
+						))}
 				</div>
 				<div className='schedule-game-location'>
 					<p>{item.location[0]}</p>
 					<p>{`${item.location[1]}, ${item.location[2]}`}</p>
-					<p className='schedule-game-cta'>
-						<a href='https://watch.nba.com/streaming-subscriptions' target='_blank' rel='noreferrer'>
-							Watch Live
-						</a>
-					</p>
+					{!item.isPostponed && (
+						<p className='schedule-game-cta'>
+							<a href='https://watch.nba.com/streaming-subscriptions' target='_blank' rel='noreferrer'>
+								Watch Live
+							</a>
+						</p>
+					)}
 				</div>
 			</div>
 		</li>
