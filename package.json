@@ -1,16 +1,16 @@
 {
-	"name": "nba-team-schedule",
+	"name": "nba-schedule",
 	"version": "0.1.0",
-	"description": "Schedule component which displays any NBA team's upcoming games.",
+	"description": "2020-21 NBA schedule component.",
 	"homepage": "./",
 	"author": "Clint Harrison <clint@cowlik.com>",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cowlik/nba-team-schedule.git"
+		"url": "https://github.com/cowlik/nba-schedule.git"
 	},
 	"bugs": {
-		"url": "https://github.com/cowlik/nba-team-schedule/issues"
+		"url": "https://github.com/cowlik/nba-schedule/issues"
 	},
 	"private": true,
 	"dependencies": {
@@ -25,12 +25,6 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
 	},
 	"browserslist": {
 		"production": [

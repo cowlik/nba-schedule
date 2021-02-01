@@ -1,6 +1,8 @@
 @import '../../styles/variables';
 
 .schedule {
+	width: 100%;
+	max-width: 400px;
 	background-color: #fff;
 	border-radius: 4px;
 	font-weight: normal;
@@ -12,6 +14,12 @@
 	footer {
 		padding: $padding;
 		background-color: #eee;
+	}
+
+	header {
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: 25%;
 	}
 
 	footer {
@@ -58,7 +66,7 @@
 }
 
 .schedule-game {
-	padding: ($padding / 2) 0;
+	padding-bottom: $padding / 2;
 	background-image: linear-gradient(#fff 35%, #dfdfdf);
 	border-bottom: 1px solid $trailblazers-red;
 	opacity: 0;
@@ -70,7 +78,7 @@
 	}
 
 	img {
-		width: 55px;
+		width: 70px;
 		height: auto;
 	}
 
@@ -104,22 +112,6 @@
 		padding-top: $padding / 2;
 		line-height: 0.9rem;
 	}
-
-	@media only screen and (min-width: $screen-med) and (max-width: $screen-lrg - 1) {
-		img {
-			width: 45px;
-		}
-
-		> div:first-child {
-			> div {
-				padding: $padding;
-			}
-
-			> div:first-child {
-				padding-right: 0;
-			}
-		}
-	}
 }
 
 .schedule-game-date {
@@ -144,8 +136,9 @@
 
 .schedule-game-designation {
 	padding: 0 !important;
-	color: #666;
-	font-size: 0.8rem;
+	color: #333;
+	font-family: 'UnitedSansCdHv', franklin-gothic-urw;
+	font-size: 1rem;
 	font-weight: bold;
 }
 
@@ -153,10 +146,6 @@
 .schedule-game-opponent {
 	font-family: 'UnitedSansCdHv', franklin-gothic-urw;
 	line-height: 0.8rem;
-
-	p {
-		margin-top: 2px;
-	}
 }
 
 .schedule-game-broadcasts,

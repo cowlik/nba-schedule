@@ -25,42 +25,10 @@ body {
 }
 
 main {
-	max-width: 1170px;
-	margin: 0 auto;
+	max-width: 100%;
 	display: flex !important;
-	flex-direction: column;
-
-	> section {
-		padding: $padding;
-		background-color: #fff;
-
-		h2 {
-			color: $trailblazers-red;
-		}
-
-		p {
-			color: #777;
-		}
-
-		img {
-			width: 100%;
-			height: auto;
-		}
-	}
-
-	@media only screen and (min-width: $screen-med) {
-		flex-direction: row;
-
-		> section {
-			width: 68.085%;
-			min-height: 100vh;
-			margin-right: 20px;
-		}
-
-		> aside {
-			width: 31.915%;
-		}
-	}
+	align-items: center;
+	justify-content: center;
 }
 
 h1 {
