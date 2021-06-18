@@ -13,10 +13,10 @@ const Schedule = (props) => {
 
 		data.forEach((item, i) => {
 			const dateGame = new Date(item.etm);
-			const dateNow = new Date();
+			const dateNow = new Date('Fri Jan 01 2021 10:00:00 GMT-0700 (Pacific Daylight Time)');
 
 			if (dateGame >= dateNow) {
-				if (counter < max && item.stt.toLowerCase() !== 'final') {
+				if (counter < max && item.stt.toLowerCase() === 'final') {
 					const isAway = item.h.tn.toLowerCase() !== team ? true : false;
 					const isPostponed = item.stt.toLowerCase() === 'ppd' ? true : false;
 
