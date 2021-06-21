@@ -26,7 +26,7 @@ const Schedule = (props) => {
 						isAway: isAway,
 						isPostponed: isPostponed,
 						date: parseDate(dateGame),
-						time: item.stt,
+						time: parseTime(dateGame), //item.stt
 						broadcasts: getBroadcasts(item.bd.b, ['natl', isAway ? 'away' : 'home']),
 						team: isAway ? item.v : item.h,
 						opponent: isAway ? item.h : item.v,
@@ -42,6 +42,16 @@ const Schedule = (props) => {
 		document.getElementsByClassName('schedule-header')[0].style.backgroundImage = `url('${Constants.LOGO_SVG(games[0].team.ta)}')`;
 
 		return games;
+	};
+
+	const parseTime = (date) => {
+		let h = date.getHours() - 3;
+		let m = date.getMinutes();
+
+		h = h > 12 ? h % 12 : h;
+		m = m < 10 ? `0${m}` : m;
+
+		return `${h}:${m} PM PT`;
 	};
 
 	const parseDate = (date) => {
